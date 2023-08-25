@@ -984,6 +984,9 @@ task.spawn(function()
 	
 	script.Parent.Hub.MouseButton1Click:Connect(function()
 		script.Parent.ScrollingFrame.Visible = not script.Parent.ScrollingFrame.Visible
+		if script.Parent.ScrollingFrame.Visible == false then
+			game.Players.LocalPlayer.PlayerGui.Shop.Background.Visible = false
+		end
 	end)
 	
 	UserInputService.InputBegan:Connect(function(keycode,GPE)
