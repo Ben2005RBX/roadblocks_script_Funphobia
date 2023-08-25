@@ -2,7 +2,7 @@
 	
 	Gui2Lua Winning! ~ Ch0nky Code:tm:
 	
-	85 instances
+	87 instances
 	
 	-> 10:07:2023 	-	fixed "Http requests can only be executed by game server" error when pressing "Play"
 					-	fixed modulescripts's "script" variable not being set properly
@@ -98,6 +98,8 @@ local gui =
 	UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint"),
 	Hello = Instance.new("TextLabel"),
 	UIStroke_29 = Instance.new("UIStroke"),
+	Version = Instance.new("TextLabel"),
+	UIStroke_30 = Instance.new("UIStroke"),
 	hubtext = Instance.new("TextButton"),
 	UIAspectRatioConstraint_1 = Instance.new("UIAspectRatioConstraint"),
 	Hub = Instance.new("ImageButton"),
@@ -810,7 +812,7 @@ gui.Hello.TextScaled = true
 gui.Hello.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 gui.Hello.FontFace = Font.new("rbxasset://fonts/families/Merriweather.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
 gui.Hello.TextSize = 14
-gui.Hello.Position = UDim2.new(0.317643, 0, 0.995914, 0)
+gui.Hello.Position = UDim2.new(0.30507, 0, 0.995914, 0)
 gui.Hello.Size = UDim2.new(0.350265, 0, 0.118918, 0)
 gui.Hello.Name = "Hello"
 gui.Hello.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -825,6 +827,30 @@ gui.UIStroke_29.Name = "UIStroke"
 gui.UIStroke_29.Thickness = 2
 gui.UIStroke_29.Transparency = 0.5
 gui.UIStroke_29.Parent = gui.Hello
+
+gui.Version.TextWrapped = true
+gui.Version.BorderSizePixel = 0
+gui.Version.TextScaled = true
+gui.Version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+gui.Version.FontFace = Font.new("rbxasset://fonts/families/Merriweather.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+gui.Version.TextSize = 14
+gui.Version.Position = UDim2.new(0.534528, 0, 1.1123, 0)
+gui.Version.Size = UDim2.new(0.247938, 0, 0.0841769, 0)
+gui.Version.Name = "Version"
+gui.Version.TextColor3 = Color3.fromRGB(255, 255, 255)
+gui.Version.BorderColor3 = Color3.fromRGB(0, 0, 0)
+gui.Version.Text = "Version:"
+gui.Version.TextTransparency = 0.5
+gui.Version.BackgroundTransparency = 1
+gui.Version.TextXAlignment = Enum.TextXAlignment.Left
+gui.Version.Parent = gui.ScrollingFrame
+
+gui.UIStroke_30.LineJoinMode = Enum.LineJoinMode.Bevel
+gui.UIStroke_30.Name = "UIStroke"
+gui.UIStroke_30.Thickness = 2
+gui.UIStroke_30.Color = Color3.fromRGB(88, 44, 149)
+gui.UIStroke_30.Transparency = 0.5
+gui.UIStroke_30.Parent = gui.Version
 
 gui.hubtext.TextWrapped = true
 gui.hubtext.BorderSizePixel = 0
@@ -924,7 +950,7 @@ task.spawn(function()
 	local bindGRAVHACK = nil
 	local loopNuke = false
 	
-	
+	uiScroll.Version.Text = "Version: 25.08.2023[3]"
 	
 	local function fireproximityprompt(Obj, Amount, Skip)
 		if Obj.ClassName == "ProximityPrompt" then 
