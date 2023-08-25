@@ -834,8 +834,8 @@ gui.Version.TextScaled = true
 gui.Version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 gui.Version.FontFace = Font.new("rbxasset://fonts/families/Merriweather.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
 gui.Version.TextSize = 14
-gui.Version.Position = UDim2.new(0.534528, 0, 1.1123, 0)
-gui.Version.Size = UDim2.new(0.247938, 0, 0.0841769, 0)
+gui.Version.Position = UDim2.new(0.299362, 0, -0.12116, 0)
+gui.Version.Size = UDim2.new(0.356065, 0, 0.120887, 0)
 gui.Version.Name = "Version"
 gui.Version.TextColor3 = Color3.fromRGB(255, 255, 255)
 gui.Version.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -938,6 +938,7 @@ task.spawn(function()
 	local UserInputService = game:GetService("UserInputService")
 	local VehiclePushForce = 0
 	local uiMain = script.Parent
+	local GUI = uiMain.Parent
 	local uiScroll = uiMain.ScrollingFrame
 	local PageOne = uiScroll.PageOne
 	local delDeb = false
@@ -950,7 +951,7 @@ task.spawn(function()
 	local bindGRAVHACK = nil
 	local loopNuke = false
 	
-	uiScroll.Version.Text = "Version: 25.08.2023[3]"
+	uiScroll.Version.Text = "Version:"..GUI:GetAttribute("date").."["..GUI:GetAttribute("version").."]"
 	
 	local function fireproximityprompt(Obj, Amount, Skip)
 		if Obj.ClassName == "ProximityPrompt" then 
