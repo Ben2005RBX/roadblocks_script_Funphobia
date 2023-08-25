@@ -966,7 +966,7 @@ task.spawn(function()
 				local detector = desc:FindFirstChildOfClass("ClickDetector")
 				if detector ~= nil then
 					makeNotification("Funphobia","Cached item:"..desc.Name.."","rbxassetid://14532150253",3)
-					script["Walkie Talkie 2 (SFX)"]:Play()
+					--script["Walkie Talkie 2 (SFX)"]:Play()
 				else
 					warn("No Detector for:"..desc.Name)
 				end
