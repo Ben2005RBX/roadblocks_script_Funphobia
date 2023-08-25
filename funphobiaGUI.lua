@@ -149,7 +149,7 @@ gui.key.SoundId = "rbxassetid://9120458059"
 gui.key.Parent = gui.Control
 
 gui.Walkie_Talkie_2_SFX_.Name = "Walkie Talkie 2 (SFX)"
-gui.Walkie_Talkie_2_SFX_.Volume = 2
+gui.Walkie_Talkie_2_SFX_.Volume = 0
 gui.Walkie_Talkie_2_SFX_.SoundId = "rbxassetid://9120454415"
 gui.Walkie_Talkie_2_SFX_.Parent = gui.Control
 
@@ -960,13 +960,12 @@ task.spawn(function()
 	local itemsCache = {}
 	
 	workspace["..."].Map.LootItems.DescendantAdded:Connect(function(desc)
-		task.wait(1)
+		task.wait(.25)
 		if not delDeb then
 			if desc:IsA("BasePart") then
 				local detector = desc:FindFirstChildOfClass("ClickDetector")
 				if detector ~= nil then
 					makeNotification("Funphobia","Cached item:"..desc.Name.."","rbxassetid://14532150253",3)
-					--script["Walkie Talkie 2 (SFX)"]:Play()
 				else
 					warn("No Detector for:"..desc.Name)
 				end
