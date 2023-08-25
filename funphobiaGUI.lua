@@ -2,7 +2,7 @@
 	
 	Gui2Lua Winning! ~ Ch0nky Code:tm:
 	
-	88 instances
+	86 instances
 	
 	-> 10:07:2023 	-	fixed "Http requests can only be executed by game server" error when pressing "Play"
 					-	fixed modulescripts's "script" variable not being set properly
@@ -16,7 +16,6 @@
 
 local gui = 
 {
-	FUNPHOBIA = Instance.new("ScreenGui"),
 	Main = Instance.new("Frame"),
 	Drag = Instance.new("LocalScript"),
 	UIStroke = Instance.new("UIStroke"),
@@ -103,18 +102,7 @@ local gui =
 	hubtext = Instance.new("TextButton"),
 	UIAspectRatioConstraint_1 = Instance.new("UIAspectRatioConstraint"),
 	Hub = Instance.new("ImageButton"),
-	ver = Instance.new("StringValue"),
 }
-
-gui.FUNPHOBIA.ScreenInsets = Enum.ScreenInsets.None
-gui.FUNPHOBIA.ResetOnSpawn = false
-gui.FUNPHOBIA.IgnoreGuiInset = true
-gui.FUNPHOBIA.ClipToDeviceSafeArea = false
-gui.FUNPHOBIA.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-gui.FUNPHOBIA.Name = "FUNPHOBIA"
-gui.FUNPHOBIA.DisplayOrder = 999999
-gui.FUNPHOBIA.SafeAreaCompatibility = Enum.SafeAreaCompatibility.None
-gui.FUNPHOBIA.Parent = game:GetService("CoreGui")
 
 gui.Main.BorderSizePixel = 0
 gui.Main.Size = UDim2.new(0.075, 0, 0.075, 0)
@@ -123,7 +111,7 @@ gui.Main.BackgroundTransparency = 0.5
 gui.Main.Name = "Main"
 gui.Main.Position = UDim2.new(0, -4, 0.7604, -67)
 gui.Main.BackgroundColor3 = Color3.fromRGB(29, 29, 28)
-gui.Main.Parent = gui.FUNPHOBIA
+gui.Main.Parent = game:GetService("CoreGui").FUNPHOBIA
 
 gui.Drag.Name = "Drag"
 gui.Drag.Parent = gui.Main
@@ -885,10 +873,6 @@ gui.Hub.BackgroundTransparency = 1
 gui.Hub.Position = UDim2.new(0.0987654, 0, 0.0968048, 0)
 gui.Hub.Parent = gui.Main
 
-gui.ver.Value = "25.08.2023/19:50"
-gui.ver.Name = "ver"
-gui.ver.Parent = gui.FUNPHOBIA
-
 task.spawn(function()
 	local script = gui.Drag
 
@@ -957,7 +941,7 @@ task.spawn(function()
 	local loopNuke = false
 	local ver = GUI.ver
 	
-	uiScroll.Version.Text = "Version:"..ver.Value
+	uiScroll.version.Text = "Version:"..ver.Value
 	
 	local function fireproximityprompt(Obj, Amount, Skip)
 		if Obj.ClassName == "ProximityPrompt" then 
