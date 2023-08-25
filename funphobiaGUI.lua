@@ -2,7 +2,7 @@
 	
 	Gui2Lua Winning! ~ Ch0nky Code:tm:
 	
-	87 instances
+	88 instances
 	
 	-> 10:07:2023 	-	fixed "Http requests can only be executed by game server" error when pressing "Play"
 					-	fixed modulescripts's "script" variable not being set properly
@@ -98,11 +98,12 @@ local gui =
 	UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint"),
 	Hello = Instance.new("TextLabel"),
 	UIStroke_29 = Instance.new("UIStroke"),
-	Version = Instance.new("TextLabel"),
+	version = Instance.new("TextLabel"),
 	UIStroke_30 = Instance.new("UIStroke"),
 	hubtext = Instance.new("TextButton"),
 	UIAspectRatioConstraint_1 = Instance.new("UIAspectRatioConstraint"),
 	Hub = Instance.new("ImageButton"),
+	ver = Instance.new("StringValue"),
 }
 
 gui.FUNPHOBIA.ScreenInsets = Enum.ScreenInsets.None
@@ -828,29 +829,29 @@ gui.UIStroke_29.Thickness = 2
 gui.UIStroke_29.Transparency = 0.5
 gui.UIStroke_29.Parent = gui.Hello
 
-gui.Version.TextWrapped = true
-gui.Version.BorderSizePixel = 0
-gui.Version.TextScaled = true
-gui.Version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-gui.Version.FontFace = Font.new("rbxasset://fonts/families/Merriweather.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-gui.Version.TextSize = 14
-gui.Version.Position = UDim2.new(0.318941, 0, -0.12116, 0)
-gui.Version.Size = UDim2.new(0.356065, 0, 0.120887, 0)
-gui.Version.Name = "Version"
-gui.Version.TextColor3 = Color3.fromRGB(255, 255, 255)
-gui.Version.BorderColor3 = Color3.fromRGB(0, 0, 0)
-gui.Version.Text = "Version:"
-gui.Version.TextTransparency = 0.5
-gui.Version.BackgroundTransparency = 1
-gui.Version.TextXAlignment = Enum.TextXAlignment.Left
-gui.Version.Parent = gui.ScrollingFrame
+gui.version.TextWrapped = true
+gui.version.BorderSizePixel = 0
+gui.version.TextScaled = true
+gui.version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+gui.version.FontFace = Font.new("rbxasset://fonts/families/Merriweather.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+gui.version.TextSize = 14
+gui.version.Position = UDim2.new(0.318941, 0, -0.12116, 0)
+gui.version.Size = UDim2.new(0.356065, 0, 0.120887, 0)
+gui.version.Name = "version"
+gui.version.TextColor3 = Color3.fromRGB(255, 255, 255)
+gui.version.BorderColor3 = Color3.fromRGB(0, 0, 0)
+gui.version.Text = "Version:"
+gui.version.TextTransparency = 0.5
+gui.version.BackgroundTransparency = 1
+gui.version.TextXAlignment = Enum.TextXAlignment.Left
+gui.version.Parent = gui.ScrollingFrame
 
 gui.UIStroke_30.LineJoinMode = Enum.LineJoinMode.Bevel
 gui.UIStroke_30.Name = "UIStroke"
 gui.UIStroke_30.Thickness = 2
 gui.UIStroke_30.Color = Color3.fromRGB(88, 44, 149)
 gui.UIStroke_30.Transparency = 0.5
-gui.UIStroke_30.Parent = gui.Version
+gui.UIStroke_30.Parent = gui.version
 
 gui.hubtext.TextWrapped = true
 gui.hubtext.BorderSizePixel = 0
@@ -883,6 +884,10 @@ gui.Hub.Name = "Hub"
 gui.Hub.BackgroundTransparency = 1
 gui.Hub.Position = UDim2.new(0.0987654, 0, 0.0968048, 0)
 gui.Hub.Parent = gui.Main
+
+gui.ver.Value = "25.08.2023/19:50"
+gui.ver.Name = "ver"
+gui.ver.Parent = gui.FUNPHOBIA
 
 task.spawn(function()
 	local script = gui.Drag
@@ -950,8 +955,9 @@ task.spawn(function()
 	local bindVECHACK = nil
 	local bindGRAVHACK = nil
 	local loopNuke = false
+	local ver = GUI.ver
 	
-	uiScroll.Version.Text = "Version:"..GUI:GetAttribute("date").."["..GUI:GetAttribute("version").."]"
+	uiScroll.Version.Text = "Version:"..ver.Value
 	
 	local function fireproximityprompt(Obj, Amount, Skip)
 		if Obj.ClassName == "ProximityPrompt" then 
