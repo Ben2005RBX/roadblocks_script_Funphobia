@@ -991,7 +991,7 @@ task.spawn(function()
 	
 	UserInputService.InputBegan:Connect(function(keycode,GPE)
 		if keycode.KeyCode == Enum.KeyCode.P and not GPE then
-			uiScroll.Visible = not uiScroll.Visible
+			uiScroll.Visible = not uiScrollVisible
 			if uiScroll.Visible == false then
 				game.Players.LocalPlayer.PlayerGui.Shop.Background.Visible = false
 			end
@@ -1045,22 +1045,12 @@ task.spawn(function()
 			tool.CanBeDropped = true
 			tool.Name = "Try Kill"
 			tool.Activated:Connect(function()
-				local mouse = Player:GetMouse()
-				local hit = mouse.Hit
-				local basePart = mouse.Target
-				print(mouse,hit,basePart)
-				
-				if basePart ~= nil then
-					if basePart:IsA("BasePart") then
-						local model = basePart.Parent
-						print(model)
-						if model:IsA("Model") then
-							print(model.Name)
-							local humanoid = model:FindFirstChildOfClass("Humanoid")
-							if humanoid ~= nil then
-								model.Torso.Neck:Destroy()
-							end
-						end
+				local boss = workspace.Waifus:FindFirstChildOfClass("Model")
+				if boss ~= nil then
+					local humanoid = boss:FindFirstChildOfClass("Humanoid")
+					if humanoid ~= nil then
+						boss.Torso.Neck:Destroy()
+						boss.Head.CFrame = workspace.CurrentCamera.CFrame
 					end
 				end
 			end)
