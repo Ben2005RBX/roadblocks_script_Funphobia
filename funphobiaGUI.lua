@@ -991,7 +991,7 @@ task.spawn(function()
 	
 	UserInputService.InputBegan:Connect(function(keycode,GPE)
 		if keycode.KeyCode == Enum.KeyCode.P and not GPE then
-			uiScroll.Visible = not uiScrollVisible
+			uiScroll.Visible = not uiScroll.Visible
 			if uiScroll.Visible == false then
 				game.Players.LocalPlayer.PlayerGui.Shop.Background.Visible = false
 			end
