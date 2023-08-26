@@ -949,7 +949,6 @@ task.spawn(function()
 	local bindVECHACK = nil
 	local bindGRAVHACK = nil
 	local loopNuke = false
-	local ver = GUI.ver
 	
 	spawn(function()
 		
