@@ -2,7 +2,7 @@
 	
 	Gui2Lua Winning! ~ Ch0nky Code:tm:
 	
-	88 instances
+	87 instances
 	
 	-> 10:07:2023 	-	fixed "Http requests can only be executed by game server" error when pressing "Play"
 					-	fixed modulescripts's "script" variable not being set properly
@@ -103,7 +103,6 @@ local gui =
 	hubtext = Instance.new("TextButton"),
 	UIAspectRatioConstraint_1 = Instance.new("UIAspectRatioConstraint"),
 	Hub = Instance.new("ImageButton"),
-	ver = Instance.new("StringValue"),
 }
 
 gui.FUNPHOBIA.ScreenInsets = Enum.ScreenInsets.None
@@ -835,7 +834,7 @@ gui.version.TextScaled = true
 gui.version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 gui.version.FontFace = Font.new("rbxasset://fonts/families/Merriweather.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
 gui.version.TextSize = 14
-gui.version.Position = UDim2.new(0.318941, 0, -0.12116, 0)
+gui.version.Position = UDim2.new(0.333625, 0, -0.12116, 0)
 gui.version.Size = UDim2.new(0.356065, 0, 0.120887, 0)
 gui.version.Name = "version"
 gui.version.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -843,7 +842,6 @@ gui.version.BorderColor3 = Color3.fromRGB(0, 0, 0)
 gui.version.Text = "Version:"
 gui.version.TextTransparency = 0.5
 gui.version.BackgroundTransparency = 1
-gui.version.TextXAlignment = Enum.TextXAlignment.Left
 gui.version.Parent = gui.ScrollingFrame
 
 gui.UIStroke_30.LineJoinMode = Enum.LineJoinMode.Bevel
@@ -884,10 +882,6 @@ gui.Hub.Name = "Hub"
 gui.Hub.BackgroundTransparency = 1
 gui.Hub.Position = UDim2.new(0.0987654, 0, 0.0968048, 0)
 gui.Hub.Parent = gui.Main
-
-gui.ver.Value = "25.08.2023/19:50"
-gui.ver.Name = "ver"
-gui.ver.Parent = gui.FUNPHOBIA
 
 task.spawn(function()
 	local script = gui.Drag
@@ -957,7 +951,47 @@ task.spawn(function()
 	local loopNuke = false
 	local ver = GUI.ver
 	
-	uiScroll.version.Text = "Version:"..ver.Value
+	spawn(function()
+		
+	
+		local function HttpGet(url)
+			return game:HttpGet(url)
+		end
+		
+		local HttpService = game:GetService("HttpService")
+		local owner = "Ben2005RBX"
+		local repo = "roadblocks_script_Funphobia"
+		local filePath = "funphobiaGUI.lua"
+	
+		local apiUrl = string.format("https://api.github.com/repos/%s/%s/commits", owner, repo)
+		local response = HttpGet(apiUrl)
+		local jsonResponse = HttpGet(apiUrl)
+		local latestCommit = HttpGet(apiUrl)
+		local latestCommitSha = HttpGet(apiUrl)
+	
+		-- Parse JSON data
+		jsonResponse = HttpService:JSONDecode(jsonResponse)
+		latestCommit = jsonResponse[1]
+		latestCommitSha = latestCommit.sha
+	
+		local fileApiUrl = string.format("https://api.github.com/repos/%s/%s/contents/%s?ref=%s", owner, repo, filePath, latestCommitSha)
+		local fileResponse = HttpGet(fileApiUrl)
+		local fileJsonResponse = HttpGet(fileApiUrl)
+		local fileCommitSha = HttpGet(fileApiUrl)
+	
+		-- Parse JSON data
+		fileJsonResponse = HttpService:JSONDecode(fileJsonResponse)
+		fileCommitSha = fileJsonResponse.sha
+	
+		local fullCommitString = string.format("commit %s", latestCommitSha)
+	
+		print("Full Commit String:", fullCommitString)
+		print("File Commit Sha:", fileCommitSha)
+		local split = string.split(fullCommitString," ")
+		local ver = string.sub(split[2],0,7)
+		print(ver)
+		uiScroll.version.Text = "Version:"..ver
+	end)
 	
 	local function fireproximityprompt(Obj, Amount, Skip)
 		if Obj.ClassName == "ProximityPrompt" then 
