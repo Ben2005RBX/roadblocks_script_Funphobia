@@ -1116,6 +1116,7 @@ task.spawn(function()
 					local humanoid = boss:FindFirstChildOfClass("Humanoid")
 					if humanoid ~= nil then
 						boss.Head.CFrame = workspace.CurrentCamera.CFrame
+						boss.Head.Size = Vector3.new(2, 1, 1)
 						if boss.Torso:FindFirstChild("Neck") then
 						boss.Torso.Neck:Destroy()
 						end
